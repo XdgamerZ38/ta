@@ -695,6 +695,21 @@ class PlayState extends MusicBeatState
 						stageCurtains.active = false;
 	
 						add(stageCurtains);
+			}
+			case 'release': // smoke bad modchart good (;
+			{
+					defaultCamZoom = 0.9;
+					curStage = 'garstage';
+					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stage1'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.9, 0.9);
+					bg.active = false;
+					add(bg);
+			
+					
+					dad = new Character(400, 130, 'garcelloghosty');
+					dad.alpha = 0;
+					add(dad);
 				}
 			default:
 			{
@@ -797,6 +812,9 @@ class PlayState extends MusicBeatState
 					resetFastCar();
 					add(fastCar);
 				}
+				
+			case 'garstage':
+				dad.y += 350;
 
 			case 'mall':
 				boyfriend.x += 200;
@@ -3310,7 +3328,31 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('stepHit',[curStep]);
 		}
 
-
+		if (SONG.song.toLowerCase() == 'release')
+		{
+			 if (curStep == 262)
+			 {
+				dad.animation.play('coolguy');
+			 }
+			 if (curStep == 902)
+			 {
+				dad.animation.play('coolguy');
+			 }
+			 if (curStep == 1862)
+			 {
+				dad.animation.play('coolguy');
+			 }
+			 if (curStep == 2176)
+			 {
+			    remove(dad);
+	            dad = new Character(dad.x, dad.y, 'garcelloghosty');
+				add(dad);
+		     }
+			 if (curStep == 2392)
+			 {
+				dad.animation.play('coolguy');
+		     }
+		}
 
 		// yes this updates every step.
 		// yes this is bad
