@@ -696,7 +696,7 @@ class PlayState extends MusicBeatState
 	
 						add(stageCurtains);
 			}
-			case 'release': // smoke bad modchart good (;
+			case 'garstage': // smoke bad modchart good (;
 			{
 					defaultCamZoom = 0.9;
 					curStage = 'garstage';
